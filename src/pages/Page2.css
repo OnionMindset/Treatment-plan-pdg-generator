@@ -1,0 +1,93 @@
+/* Page2.css (with avatar styling) */
+.page2 {
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  background: #b5a37d;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  box-sizing: border-box;
+}
+
+.bg-logo {
+  position: absolute;
+  width: 1288px;
+  bottom: -140px;
+  left: 49px;
+  pointer-events: none;
+}
+
+.p2-title {
+  font-size: 106px;
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  color: #ede8db;
+  margin-top: 180px;
+  margin-bottom: 123px;
+}
+
+.p2-sub {
+  font-size: 42px;
+  font-weight: 500;
+  color: #ede8db;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Avatar container */
+.p2-names {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 120px;
+  color: #ede8db;
+  text-align: center;
+}
+
+.p2-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p2-avatar-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.p2-avatar-name {
+  font-size: 36px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.p2-avatar-role {
+  font-size: 28px;
+  font-weight: 200;
+  color: #ede8db;
+}
+
+.p2-plan-title {
+  width: 100%;
+  font-size: 42px;
+  color: #ede8db;
+  font-weight: 500;
+  margin-bottom: 32px;
+  align-self: flex-start;
+  padding: 0 107px;
+}
+
+.p2-plan {
+  width: 100%;
+  font-size: 28px;
+  line-height: 1.6;
+  color: #ede8db;
+  text-align: left;
+  align-self: flex-start;
+  padding: 0 107px;
+}

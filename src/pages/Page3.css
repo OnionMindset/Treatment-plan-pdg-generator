@@ -1,0 +1,139 @@
+.page3 {
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: #5D0F0F;
+  box-sizing: border-box;
+
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+.page3-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 50px;
+}
+
+/* ── Title ───────────────────────────────────── */
+
+.p3-title {
+  margin-top: 120px;
+  font-size: 106px;
+  line-height: 1;
+  font-weight: 400;
+  color: #E8E998;
+  text-align: center;
+}
+
+/* ── Therapist block ─────────────────────────── */
+
+.p3-therapist {
+  width: 100%;
+  margin-top: 110px;
+  padding: 0 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.p3-portrait {
+  overflow: hidden;
+  flex: 0 0 auto;
+  background: none;
+}
+
+.p3-portrait-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(245,240,232,0.95) 0 10%, transparent 11%),
+    radial-gradient(circle at 50% 52%, rgba(245,240,232,0.7) 0 18%, transparent 19%),
+    linear-gradient(180deg, rgba(245,240,232,0.22), rgba(245,240,232,0.06));
+}
+
+.p3-therapist-copy {
+  color: #E8E998;
+  max-width: 520px;
+}
+
+.p3-therapist-name {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.p3-therapist-role {
+  font-size: 28px;
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+
+.p3-therapist-qual {
+  font-size: 28px;
+  line-height: 1.15;
+  max-width: 430px;
+}
+
+/* ── Divider ─────────────────────────────────── */
+
+.p3-divider {
+  width: 78%;
+  height: 1px;
+  margin: 120px auto 0;
+  background: #E8EC91;
+}
+
+/* ── Community manager ───────────────────────── */
+
+.p3-community {
+  width: 100%;
+  margin-top: 90px;
+  text-align: center;
+  color: #E8E998;
+}
+
+.p3-community-title {
+  font-size: 106px;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 72px;
+}
+
+.p3-community-name {
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.p3-community-role {
+  font-size: 24px;
+  line-height: 1.15;
+  margin-bottom: 46px;
+}
+
+.p3-community-note {
+  font-size: 24px;
+  line-height: 1.25;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* ── Bottom logo ─────────────────────────────── */
+
+.p3-bottom-logo {
+  position: absolute;
+  left: 50%;
+  bottom: 54px;
+  transform: translateX(-50%);
+  width: 74px;
+  height: auto;
+  object-fit: contain;
+}

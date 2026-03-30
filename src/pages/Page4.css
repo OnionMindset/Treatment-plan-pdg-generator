@@ -1,0 +1,83 @@
+.Page4 {
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  background: #506034;
+  color: #e8ec91;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  box-sizing: border-box;
+}
+
+.p4-title {
+  font-size: 103px;
+  font-weight: 400;
+  margin-bottom: 123px;
+  margin-top: 180px;
+  text-align: center;
+}
+
+.p4-sub {
+  font-size: 62px;
+  margin-bottom: 41px;
+  text-align: center;
+}
+
+.p4-price {
+  background: #e8ec91;
+  color: #506034;
+  font-weight: 400;
+  padding: 26px 51px;
+  border-radius: 31px;
+  font-size: 42px;
+  margin-bottom: 143px;
+}
+
+.p4-section {
+  width: 100%;
+  margin-bottom: 82px;
+  text-align: center;
+}
+
+.p4-chip {
+  display: inline-block;
+  background: #e8ec91;
+  color: #506034;
+  padding: 15px 36px;
+  border-radius: 24px;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 41px;
+}
+
+.p4-section ul {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto 48px;
+  padding: 0;
+  list-style-position: inside;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.p4-section li {
+  margin-bottom: 21px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.p4-section p {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto 48px;
+  font-size: 24px;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: center;
+}

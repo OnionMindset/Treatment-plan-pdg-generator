@@ -1,0 +1,30 @@
+/* ── Page ───────────────────────── */
+
+.page5 {
+  width: 1080px;
+  height: 1920px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ── Background image ─────────── */
+
+.p5-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Bottom logo ─────────────── */
+
+.p5-logo {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 342px;
+  object-fit: contain;
+}

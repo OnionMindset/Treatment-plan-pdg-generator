@@ -1,0 +1,92 @@
+.page1 {
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #5D0F0F;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  box-sizing: border-box;
+}
+
+.top {
+  height: 768px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 144px;
+  gap: 62px;
+}
+
+.logo {
+  height: 103px;
+  margin-bottom: 21px;
+  object-fit: contain;
+}
+
+.logo-fallback {
+  color: white;
+  font-size: 36px;
+}
+
+.title {
+  color: #FCEED0;
+  font-size: 123px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 62px;
+}
+
+.pills {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: 41px;
+  gap: 31px;
+}
+
+.pill {
+  padding: 15px 41px;
+  border-radius: 999px;
+  font-size: 33px;
+  color: #5D0F0F;
+}
+
+.name {
+  background: #C4D157;
+}
+
+.date {
+  background: #C5F0FA;
+}
+
+.bottom {
+  height: 1152px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.tagline {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 62px;
+  color: #FCEED0;
+  font-size: 51px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6),
+    transparent
+  );
+}
