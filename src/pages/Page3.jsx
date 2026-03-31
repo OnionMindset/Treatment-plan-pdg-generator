@@ -1,6 +1,7 @@
 import React from 'react'
 import { ASSETS } from '../config/supabase'
 import './Page3.css'
+import logoSmall from '../images/Logo/logoSmall.svg'
 
 export default function Page3({ data }) {
   // ── Fallback avatar
@@ -85,7 +86,7 @@ export default function Page3({ data }) {
           </p>
         </section>
 
-        <img src={ASSETS.logoSmall} alt="" className="p3-bottom-logo" />
+        <img src={logoSmall} alt="" className="p3-bottom-logo" />
       </div>
     </div>
   )

@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-import { ASSETS } from '../config/supabase'
 import './Page1.css'
+import cover from '../images/cover.svg'
+import logo from '../images/Logo/glassOnionLogoWithName.svg'
 
 export default function Page1({ data }) {
-  const [logoError, setLogoError] = useState(false)
-  const [coverError, setCoverError] = useState(false)
-
   return (
     
     <div className="page1">
@@ -14,18 +11,11 @@ export default function Page1({ data }) {
       <div className="top">
 
         <div className="logo-wrap">
-          {!logoError ? (
             <img
-              src={ASSETS.logo}
+              src={logo}
               alt="logo"
               className="logo"
-              onError={() => setLogoError(true)}
             />
-          ) : (
-            <div className="logo-fallback">
-              glass onion therapy
-            </div>
-          )}
         </div>
 
         <h1 className="title">
@@ -45,17 +35,11 @@ export default function Page1({ data }) {
 
       {/* Bottom */}
       <div className="bottom">
-        {!coverError ? (
           <img
-            src={ASSETS.cover}
+            src={cover}
             alt="cover"
             className="cover"
-            onError={() => setCoverError(true)}
           />
-        ) : (
-          <div className="cover-fallback" />
-        )}
-
         <div className="tagline">
           your mind, reimagined.
         </div>

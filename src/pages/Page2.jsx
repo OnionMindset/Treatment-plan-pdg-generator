@@ -1,6 +1,7 @@
 import React from "react";
 import { ASSETS } from "../config/supabase";
 import "./Page2.css";
+import logoBig from '../images/Logo/logoBig.svg'
 
 export default function Page2({ data }) {
   // ── Fallback avatar (initials)
@@ -26,7 +27,7 @@ export default function Page2({ data }) {
   return (
     <div className="page2">
       {/* Background logo */}
-      <img src={ASSETS.logoBig} alt="" className="bg-logo" />
+      <img src={logoBig} alt="" className="bg-logo" />
 
       {/* Title */}
       <h1 className="p2-title">
