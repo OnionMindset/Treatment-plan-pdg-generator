@@ -1,7 +1,6 @@
 import React from "react";
 import { ASSETS } from "../config/supabase";
 import "./Page2.css";
-import logoBig from '../images/Logo/logoBig.svg'
 
 export default function Page2({ data }) {
   // ── Fallback avatar (initials)
@@ -16,18 +15,18 @@ export default function Page2({ data }) {
 
   // ── Supabase avatar URL
   const getTherapistAvatar = (name) => {
-  const fileName = `${formatName(name)}-Avatar.svg`
-  const url = `${ASSETS.team}/${fileName}`
+    const fileName = `${formatName(name)}-Avatar.svg`;
+    const url = `${ASSETS.team}/${fileName}`;
 
-  console.log('Generated URL:', name, '→', url)
+    console.log("Generated URL:", name, "→", url);
 
-  return url
-}
+    return url;
+  };
 
   return (
     <div className="page2">
       {/* Background logo */}
-      <img src={logoBig} alt="" className="bg-logo" />
+      <img src={ASSETS.logoBig} alt="" className="bg-logo" />
 
       {/* Title */}
       <h1 className="p2-title">
@@ -63,9 +62,10 @@ export default function Page2({ data }) {
       </div>
 
       {/* Plan */}
-      <div className="p2-plan-title">For the next 30 days:</div>
-
-      <div className="p2-plan">{data.planDetails}</div>
+      <div
+        className="p2-plan"
+        dangerouslySetInnerHTML={{ __html: data.planDetails }}
+      />
     </div>
   );
 }
