@@ -6,8 +6,13 @@ export default function Page1({ data }) {
   const [logoError, setLogoError] = useState(false)
   const [coverError, setCoverError] = useState(false)
 
+  const formattedDate = data?.date
+    ? new Date(data.date).toLocaleDateString('en-US', {
+        month: 'long', day: 'numeric', year: 'numeric',
+      })
+    : '—'
+
   return (
-    
     <div className="page1">
 
       {/* Top */}
@@ -37,7 +42,7 @@ export default function Page1({ data }) {
             for {data?.customerName || '—'}
           </span>
           <span className="pill date">
-            {data?.createdAt || '—'}
+            {formattedDate}
           </span>
         </div>
 

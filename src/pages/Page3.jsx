@@ -3,29 +3,29 @@ import { ASSETS } from '../config/supabase'
 import './Page3.css'
 
 export default function Page3({ data }) {
-  // ── Fallback avatar
   const avatarUrl = (name) =>
     `https://ui-avatars.com/api/?name=${encodeURIComponent(
-      name
+      name || ''
     )}&background=6b1212&color=f5f0e8&size=200&rounded=true`
 
-  // ── Format name → "Dr. Samarth" → "DrSamarth"
   const formatName = (name) =>
-    name.trim().replace(/\./g, '').replace(/\s+/g, '')
+    (name || '').trim().replace(/\./g, '').replace(/\s+/g, '')
 
-  // ── Supabase avatar
   const getTherapistAvatar = (name) => {
     if (!name) return ''
     const fileName = `${formatName(name)}-Therapist.svg`
     return `${ASSETS.team}/${fileName}`
   }
 
-  const therapistName = data.assignedTherapist
+  const therapist = {
+    name: data.assignedTherapist || '—',
+    designation: data.assignedTherapistDesignation || '—',
+    qualification: data.assignedTherapistQualification || '—',
+  }
 
   return (
     <div className="page3">
       <div className="page-inner page3-inner">
-
         <h1 className="p3-title">
           meet your
           <br />
@@ -33,34 +33,34 @@ export default function Page3({ data }) {
         </h1>
 
         <section className="p3-therapist">
-          {/* ── REAL IMAGE (replaces placeholder) */}
           <div className="p3-portrait">
             <img
-              src={getTherapistAvatar(therapistName)}
+              src={getTherapistAvatar(therapist.name)}
               onError={(e) => {
                 e.target.onerror = null
-                e.target.src = avatarUrl(therapistName)
+                e.target.src = avatarUrl(therapist.name)
               }}
-              alt={therapistName}
+              alt={therapist.name}
               className="p3-portrait-img"
             />
           </div>
 
           <div className="p3-therapist-copy">
             <div className="p3-therapist-name">
-              {therapistName || '—'},
+              {therapist.name}
             </div>
             <div className="p3-therapist-role">
-              {data.assignedTherapistDesignation || '-'}
+              {therapist.designation}
             </div>
             <div className="p3-therapist-qual">
-              {data.assignedTherapistQaulification || '-'}
+              {therapist.qualification}
             </div>
           </div>
         </section>
 
         <div className="p3-divider" />
 
+        {/* Community Manager always shown since therapist is now single */}
         <section className="p3-community">
           <h2 className="p3-community-title">
             community
