@@ -17,11 +17,53 @@ export default function Page3({ data }) {
     return `${ASSETS.team}/${fileName}`
   }
 
+  const formatDesignation = (value = "") =>
+    value
+      .toString()
+      .trim()
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .replace(/\b\w/g, (ch) => ch.toUpperCase())
+
   const therapist = {
     name: data.assignedTherapist || '—',
     designation: data.assignedTherapistDesignation || '—',
     qualification: data.assignedTherapistQualification || '—',
   }
+
+  const selectedSupport = data.selectedSupportType // 'community_manager' | 'psychiatrist' | 'nutritionist'
+
+  const supportContent = {
+    community_manager: {
+      title: <>community<br />manager</>,
+      name: data.assignedCommManager || '—',
+      role: 'Community Manager',
+      note: (
+        <>
+          your primary point-of-contact
+          <br />
+          for any assistance with your
+          <br />
+          therapy needs.
+        </>
+      ),
+    },
+    psychiatrist: {
+      title: <>psychiatrist<br />support</>,
+      name: data.assignedPsychiatrist || '—',
+      role: formatDesignation(data.assignedPsychiatristDesignation || 'Psychiatrist'),
+      note: data.assignedPsychiatristQualification || '',
+    },
+    nutritionist: {
+      title: <>nutritionist<br />support</>,
+      name: data.assignedNutritionist || '—',
+      role: formatDesignation(data.assignedNutritionistDesignation || 'Nutritionist'),
+      note: data.assignedNutritionistQualification || '',
+    },
+  }
+
+  const support =
+    supportContent[selectedSupport] || supportContent.community_manager
 
   return (
     <div className="page3">
@@ -46,43 +88,26 @@ export default function Page3({ data }) {
           </div>
 
           <div className="p3-therapist-copy">
-            <div className="p3-therapist-name">
-              {therapist.name}
-            </div>
+            <div className="p3-therapist-name">{therapist.name}</div>
             <div className="p3-therapist-role">
-              {therapist.designation}
+              {formatDesignation(therapist.designation)}
             </div>
-            <div className="p3-therapist-qual">
-              {therapist.qualification}
-            </div>
+            <div className="p3-therapist-qual">{therapist.qualification}</div>
           </div>
         </section>
 
         <div className="p3-divider" />
 
-        {/* Community Manager always shown since therapist is now single */}
         <section className="p3-community">
-          <h2 className="p3-community-title">
-            community
-            <br />
-            manager
-          </h2>
+          <h2 className="p3-community-title">{support.title}</h2>
 
-          <div className="p3-community-name">
-            {data.assignedCommManager || '—'}
-          </div>
+          <div className="p3-community-name">{support.name}</div>
 
-          <div className="p3-community-role">
-            community manager
-          </div>
+          <div className="p3-community-role">{support.role}</div>
 
-          <p className="p3-community-note">
-            your primary point-of-contact
-            <br />
-            for any assistance with your
-            <br />
-            therapy needs.
-          </p>
+          {support.note ? (
+            <p className="p3-community-note">{support.note}</p>
+          ) : null}
         </section>
 
         <img src={ASSETS.logoSmall} alt="" className="p3-bottom-logo" />
