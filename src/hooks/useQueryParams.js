@@ -4,60 +4,121 @@ export function useQueryParams() {
   return useMemo(() => {
     const params = new URLSearchParams(window.location.search)
 
-    const getParam = (key) => params.get(key) ?? ''
+    // ── Helpers ─────────────────────────────────────
+    const safe = (v) =>
+      !v || v === 'null' || v === 'undefined' ? '' : v
+
+    const getParam = (key) => safe(params.get(key))
 
     const parseArray = (key) =>
       params.get(key)
-        ? params.get(key).split(',').map(s => s.trim()).filter(Boolean)
+        ? params
+            .get(key)
+            .split(',')
+            .map((s) => s.trim())
+            .filter(Boolean)
         : []
 
     const parseJSON = (key) => {
       try {
-        return JSON.parse(decodeURIComponent(params.get(key) ?? '{}'))
+        return JSON.parse(params.get(key) || '{}')
       } catch {
         return {}
       }
     }
 
-    // ── Sample data for local dev ──────────────────────────────────
+    // ── Sample data (used when no URL params) ───────
     const sample = {
       customerName: 'Adithya Pai',
-      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      date: new Date().toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+
       planCreatedBy: ['Pranaamya', 'Sahana', 'Dr. Mehta'],
-      planCreatedByDesignation: ['Psychodynamic Psychotherapist', 'Psychiatrist', 'Clinical Therapist'],
-      planCreatedByQualification: ['MA Applied Psychology', 'MBBS', 'MSc Clinical Psychology'],
+      planCreatedByDesignation: [
+        'psychodynamic_psychotherapist',
+        'psychiatrist',
+        'clinical_psychologist',
+      ],
+      planCreatedByQualification: [
+        'MA Applied Psychology',
+        'MBBS',
+        'MSc Clinical Psychology',
+      ],
+
       assignedTherapist: 'Pranaamya',
-      assignedTherapistDesignation: 'Psychodynamic Psychotherapist',
-      assignedTherapistQualification: 'MA Applied Psychology\nCertified Psychodynamic Therapist',
+      assignedTherapistDesignation: 'psychodynamic_psychotherapist',
+      assignedTherapistQualification:
+        'MA Applied Psychology\nCertified Psychodynamic Therapist',
+
+      assignedPsychiatrist: 'Dr. Mehta',
+      assignedPsychiatristDesignation: 'psychiatrist',
+      assignedPsychiatristQualification: 'MBBS, MD Psychiatry',
+
+      assignedNutritionist: 'Anjali',
+
       assignedCommManager: 'Simba',
+
       pricing: 67420,
+
       planDetails: {
         sessionFrequency: '2',
         sessionInterval: 'week',
+
         assessmentPlan: ['Option 1', 'Option 2'],
-        psychiatryPlan: 'Plan A',
+
+        psychiatryPlan: true,
         psychiatryFrequency: '1',
         psychiatryInterval: 'month',
         psychiatrist: 'Dr. Mehta',
-        nutritionist: 'Anjali',
+
+        nutritionist: true,
+        nutritionistName: 'Anjali',
       },
     }
 
+    // ── If no params, use sample ────────────────────
     if (!params.get('customerName')) return sample
 
-    // ── Parse real URL params ──────────────────────────────────────
+    // ── Parse real URL params ───────────────────────
     return {
-      customerName:                   getParam('customerName'),
-      date:                           getParam('date'),
-      planCreatedBy:                  parseArray('planCreatedBy'),
-      planCreatedByDesignation:       parseArray('planCreatedByDesignation'),
-      planCreatedByQualification:     parseArray('planCreatedByQualification'),
-      assignedTherapist:              getParam('assignedTherapist'),
-      assignedTherapistDesignation:   getParam('assignedTherapistDesignation'),
-      assignedTherapistQualification: getParam('assignedTherapistQualification'),
-      assignedCommManager:            getParam('assignedCommManager'),
-      pricing:                        Number(getParam('pricing')),
-      planDetails:                    parseJSON('planDetails'),
+      customerName: getParam('customerName'),
+      date: getParam('date'),
+
+      planCreatedBy: parseArray('planCreatedBy'),
+      planCreatedByDesignation: parseArray(
+        'planCreatedByDesignation'
+      ),
+      planCreatedByQualification: parseArray(
+        'planCreatedByQualification'
+      ),
+
+      assignedTherapist: getParam('assignedTherapist'),
+      assignedTherapistDesignation: getParam(
+        'assignedTherapistDesignation'
+      ),
+      assignedTherapistQualification: getParam(
+        'assignedTherapistQualification'
+      ),
+
+      // ✅ FIXED: now included
+      assignedPsychiatrist: getParam('assignedPsychiatrist'),
+      assignedPsychiatristDesignation: getParam(
+        'assignedPsychiatristDesignation'
+      ),
+      assignedPsychiatristQualification: getParam(
+        'assignedPsychiatristQualification'
+      ),
+
+      assignedNutritionist: getParam('assignedNutritionist'),
+
+      assignedCommManager: getParam('assignedCommManager'),
+
+      pricing: Number(getParam('pricing')),
+
+      planDetails: parseJSON('planDetails'),
     }
   }, [])
 }

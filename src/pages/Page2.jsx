@@ -5,13 +5,14 @@ import "./Page2.css";
 export default function Page2({ data }) {
   const avatarUrl = (name) =>
     `https://ui-avatars.com/api/?name=${encodeURIComponent(
-      name,
+      name || ""
     )}&background=6b1212&color=f5f0e8&size=144&rounded=true`;
 
   const formatName = (name) =>
-    name.trim().replace(/\s+/g, "").replace(/\./g, "");
+    (name || "").trim().replace(/\s+/g, "").replace(/\./g, "");
 
   const getTherapistAvatar = (name) => {
+    if (!name) return "";
     const fileName = `${formatName(name)}-Avatar.svg`;
     return `${ASSETS.team}/${fileName}`;
   };
@@ -22,12 +23,12 @@ export default function Page2({ data }) {
   };
 
   const formatDesignation = (value = "") =>
-  value
-    .toString()
-    .trim()
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .replace(/\b\w/g, (ch) => ch.toUpperCase());
+    value
+      .toString()
+      .trim()
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .replace(/\b\w/g, (ch) => ch.toUpperCase());
 
   const formatList = (arr = []) => arr.join(", ");
 
@@ -63,7 +64,9 @@ export default function Page2({ data }) {
             />
             <div className="p2-avatar-name">{person}</div>
             <div className="p2-avatar-role">
-              {formatDesignation(data.planCreatedByDesignation?.[i] || "Therapist")}
+              {formatDesignation(
+                data.planCreatedByDesignation?.[i] || "Therapist"
+              )}
             </div>
           </div>
         ))}
@@ -71,7 +74,7 @@ export default function Page2({ data }) {
 
       {/* Plan Details */}
       <div className="p2-plan">
-        {/* ── Frequency Paragraph ───────────────── */}
+        {/* ── Frequency ───────────────── */}
         {plan.sessionFrequency && (
           <p className="p2-paragraph">
             Therapeutic intervention with a session frequency of{" "}
@@ -83,7 +86,7 @@ export default function Page2({ data }) {
           </p>
         )}
 
-        {/* ── Psychometric Assessment ───────────── */}
+        {/* ── Psychometric Assessment ───────── */}
         {plan.assessmentPlan?.length > 0 ? (
           <p className="p2-paragraph">
             We are considering{" "}
@@ -97,11 +100,16 @@ export default function Page2({ data }) {
           </p>
         )}
 
-        {/* ── Psychiatry ───────────────────────── */}
+        {/* ── Psychiatry ───────────────── */}
         {plan.psychiatryPlan ? (
           <p className="p2-paragraph">
-            We are also recommending psychiatric consultations with a session
-            frequency of{" "}
+            We are also recommending psychiatric consultations{" "}
+            {plan.psychiatrist && (
+              <>
+                with <strong>{plan.psychiatrist}</strong>{" "}
+              </>
+            )}
+            with a session frequency of{" "}
             <strong>{formatSession(plan.psychiatryFrequency)}</strong> every{" "}
             <strong>{plan.psychiatryInterval || "—"}</strong>.
           </p>
@@ -112,11 +120,16 @@ export default function Page2({ data }) {
           </p>
         )}
 
-        {/* ── Nutritionist ─────────────────────── */}
+        {/* ── Nutritionist ─────────────── */}
         {plan.nutritionist && (
           <p className="p2-paragraph">
-            We also believe consulting our nutritionist will be beneficial for
-            your therapy process with us.
+            We also believe consulting our nutritionist{" "}
+            {plan.nutritionistName && (
+              <>
+                <strong>{plan.nutritionistName}</strong>{" "}
+              </>
+            )}
+            will be beneficial for your therapy process with us.
           </p>
         )}
       </div>
