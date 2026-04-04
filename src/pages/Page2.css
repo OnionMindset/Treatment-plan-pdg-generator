@@ -1,4 +1,3 @@
-/* Page2.css (with avatar styling) */
 .page2 {
   width: 1080px;
   height: 1920px;
@@ -11,6 +10,8 @@
   box-sizing: border-box;
 }
 
+/* ── Background ───────────────────────────── */
+
 .bg-logo {
   position: absolute;
   width: 1288px;
@@ -18,6 +19,8 @@
   left: 49px;
   pointer-events: none;
 }
+
+/* ── Title ───────────────────────────────── */
 
 .p2-title {
   font-size: 106px;
@@ -37,28 +40,53 @@
   text-align: center;
 }
 
-/* Avatar container */
+/* ── Avatar Grid (FIXED) ─────────────────── */
+
 .p2-names {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  width: 100%;
   margin-bottom: 120px;
   color: #ede8db;
   text-align: center;
 }
 
+/* Dynamic columns */
+.p2-names.count-1 {
+  grid-template-columns: 1fr;
+}
+
+.p2-names.count-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.p2-names.count-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Fallback */
+.p2-names:not(.count-1):not(.count-2):not(.count-3) {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Avatar container */
 .p2-avatar {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
+/* Avatar image */
 .p2-avatar-img {
   width: 220px;
   height: 220px;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
+/* Name */
 .p2-avatar-name {
   font-size: 36px;
   font-weight: 400;
@@ -66,21 +94,14 @@
   margin-bottom: 5px;
 }
 
+/* Role */
 .p2-avatar-role {
   font-size: 28px;
   font-weight: 200;
   color: #ede8db;
 }
 
-.p2-plan-title {
-  width: 100%;
-  font-size: 42px;
-  color: #ede8db;
-  font-weight: 500;
-  margin-bottom: 32px;
-  align-self: flex-start;
-  padding: 0 107px;
-}
+/* ── Plan Section ────────────────────────── */
 
 .p2-plan {
   width: 100%;
@@ -88,6 +109,33 @@
   line-height: 1.6;
   color: #ede8db;
   text-align: left;
-  align-self: flex-start;
   padding: 0 107px;
+}
+.p2-paragraph {
+  font-family: 'New Kansas', sans-serif;
+  font-weight: 500;              /* Medium */
+  font-size: 28px;
+  line-height: 1.5;              /* 150% */
+  letter-spacing: 0;
+
+  margin-bottom: 28px;
+  color: #ede8db;
+}
+
+/* Plan rows */
+.p2-plan-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.p2-plan-label {
+  font-weight: 500;
+}
+
+/* Values */
+.p2-plan-value {
+  text-align: right;
+  max-width: 60%;
 }

@@ -16,7 +16,22 @@ export default function Page2({ data }) {
     return `${ASSETS.team}/${fileName}`;
   };
 
-  const plan = data.planDetails ?? {}
+  const formatSession = (n) => {
+    const num = Number(n);
+    return num === 1 ? "1 session" : `${num} sessions`;
+  };
+
+  const formatDesignation = (value = "") =>
+  value
+    .toString()
+    .trim()
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\b\w/g, (ch) => ch.toUpperCase());
+
+  const formatList = (arr = []) => arr.join(", ");
+
+  const plan = data.planDetails ?? {};
 
   return (
     <div className="page2">
@@ -48,7 +63,7 @@ export default function Page2({ data }) {
             />
             <div className="p2-avatar-name">{person}</div>
             <div className="p2-avatar-role">
-              {data.planCreatedByDesignation?.[i] || "Therapist"}
+              {formatDesignation(data.planCreatedByDesignation?.[i] || "Therapist")}
             </div>
           </div>
         ))}
@@ -56,55 +71,54 @@ export default function Page2({ data }) {
 
       {/* Plan Details */}
       <div className="p2-plan">
-
-        {/* Session */}
+        {/* ── Frequency Paragraph ───────────────── */}
         {plan.sessionFrequency && (
-          <div className="p2-plan-row">
-            <span className="p2-plan-label">Session Frequency</span>
-            <span className="p2-plan-value">
-              {plan.sessionFrequency} session(s) per {plan.sessionInterval || '—'}
-            </span>
-          </div>
+          <p className="p2-paragraph">
+            Therapeutic intervention with a session frequency of{" "}
+            <strong>{formatSession(plan.sessionFrequency)}</strong> every{" "}
+            <strong>{plan.sessionInterval || "—"}</strong>. If you feel the
+            need, or if your therapist recommends it, we may increase the
+            frequency to give you additional support. Any ad-hoc session will
+            not come at an additional cost and is a part of the treatment plan.
+          </p>
         )}
 
-        {/* Assessment */}
-        {plan.assessmentPlan?.length > 0 && (
-          <div className="p2-plan-row">
-            <span className="p2-plan-label">Assessment Plan</span>
-            <span className="p2-plan-value">{plan.assessmentPlan.join(', ')}</span>
-          </div>
+        {/* ── Psychometric Assessment ───────────── */}
+        {plan.assessmentPlan?.length > 0 ? (
+          <p className="p2-paragraph">
+            We are considering{" "}
+            <strong>{formatList(plan.assessmentPlan)}</strong> — psychometric
+            assessments during the course of your therapy. This is also a part
+            of your treatment plan and doesn’t come at an additional cost.
+          </p>
+        ) : (
+          <p className="p2-paragraph">
+            We may or may not consider a psychometric assessment after 2 weeks.
+          </p>
         )}
 
-        {/* Psychiatry */}
-        {plan.psychiatryPlan && (
-          <>
-            <div className="p2-plan-row">
-              <span className="p2-plan-label">Psychiatry Plan</span>
-              <span className="p2-plan-value">{plan.psychiatryPlan}</span>
-            </div>
-            <div className="p2-plan-row">
-              <span className="p2-plan-label">Psychiatry Frequency</span>
-              <span className="p2-plan-value">
-                {plan.psychiatryFrequency} session(s) per {plan.psychiatryInterval || '—'}
-              </span>
-            </div>
-            {plan.psychiatrist && (
-              <div className="p2-plan-row">
-                <span className="p2-plan-label">Psychiatrist</span>
-                <span className="p2-plan-value">{plan.psychiatrist}</span>
-              </div>
-            )}
-          </>
+        {/* ── Psychiatry ───────────────────────── */}
+        {plan.psychiatryPlan ? (
+          <p className="p2-paragraph">
+            We are also recommending psychiatric consultations with a session
+            frequency of{" "}
+            <strong>{formatSession(plan.psychiatryFrequency)}</strong> every{" "}
+            <strong>{plan.psychiatryInterval || "—"}</strong>.
+          </p>
+        ) : (
+          <p className="p2-paragraph">
+            We do not see the need for any psychiatric intervention at this
+            stage.
+          </p>
         )}
 
-        {/* Nutrition */}
+        {/* ── Nutritionist ─────────────────────── */}
         {plan.nutritionist && (
-          <div className="p2-plan-row">
-            <span className="p2-plan-label">Nutritionist</span>
-            <span className="p2-plan-value">{plan.nutritionist}</span>
-          </div>
+          <p className="p2-paragraph">
+            We also believe consulting our nutritionist will be beneficial for
+            your therapy process with us.
+          </p>
         )}
-
       </div>
     </div>
   );
