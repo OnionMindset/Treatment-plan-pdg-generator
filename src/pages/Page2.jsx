@@ -37,7 +37,7 @@ export default function Page2({ data }) {
   return (
     <div className="page2">
       {/* Background logo */}
-      <img src={ASSETS.logoBig} alt="" className="bg-logo" />
+      <img src={ASSETS.logoBig} alt="" className="bg-logo" loading="lazy"/>
 
       {/* Title */}
       <h1 className="p2-title">
@@ -61,6 +61,7 @@ export default function Page2({ data }) {
               }}
               alt={person}
               className="p2-avatar-img"
+              loading="lazy"
             />
             <div className="p2-avatar-name">{person}</div>
             <div className="p2-avatar-role">

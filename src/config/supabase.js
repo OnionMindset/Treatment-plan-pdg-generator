@@ -8,14 +8,23 @@ const FONTS_BUCKET     = 'fonts'          // bucket where fonts live
 
 const BASE = `https://${SUPABASE_PROJECT}.supabase.co/storage/v1/object/public`
 
+import logo      from '../assets/glassOnionLogoWithName.svg'
+import cover     from '../assets/cover.svg'
+import logoBig   from '../assets/logoBig.svg'
+import logoSmall from '../assets/logoSmall.svg'
+import back      from '../assets/back.svg'
+import logoWhite from '../assets/glassOnionLogoWithNameWhite.svg'
+
 // ── Image assets ──────────────────────────────────────────────────
 export const ASSETS = {
-  logo:  `${BASE}/${IMAGES_BUCKET}/glassOnionLogoWithName.svg`,
-  cover: `${BASE}/${IMAGES_BUCKET}/cover.svg`,
-  logoBig: `${BASE}/${IMAGES_BUCKET}/logoBig.svg`,
-  logoSmall: `${BASE}/${IMAGES_BUCKET}/logoSmall.svg`,
-  back: `${BASE}/${IMAGES_BUCKET}/back.svg`,
-  logoWhite: `${BASE}/${IMAGES_BUCKET}/glassOnionLogoWithNameWhite.svg`,
+  logo,
+  cover,
+  logoBig,
+  logoSmall,
+  back,
+  logoWhite,
+
+  // ── Dynamic (Supabase) ────────────────────────────────────────
   team: `${BASE}/${IMAGES_BUCKET}/team`,
 }
 
@@ -29,4 +38,32 @@ export const FONTS = {
   bold:     `${BASE}/${FONTS_BUCKET}/New%20Kansas/fonnts.com-New-Kansas-Bold.woff2`,
   heavy:    `${BASE}/${FONTS_BUCKET}/New%20Kansas/fonnts.com-New-Kansas-Heavy.woff2`,
   black:    `${BASE}/${FONTS_BUCKET}/New%20Kansas/fonnts.com-New-Kansas-Black.woff2`,
+}
+
+// ── Preload helper ────────────────────────────────────────────────
+export function preloadAllAssets() {
+  const images = [
+    ASSETS.logo, ASSETS.cover, ASSETS.logoBig,
+    ASSETS.logoSmall, ASSETS.back, ASSETS.logoWhite,
+  ]
+  const fonts = [FONTS.regular, FONTS.medium, FONTS.semibold, FONTS.bold]
+
+  images.forEach(href => {
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.type = 'image/svg+xml'
+    link.href = href
+    document.head.appendChild(link)
+  })
+
+  fonts.forEach(href => {
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'font'
+    link.type = 'font/woff2'
+    link.crossOrigin = 'anonymous'
+    link.href = href
+    document.head.appendChild(link)
+  })
 }

@@ -29,6 +29,7 @@ function TeamAvatar({ name }) {
         onError={(e) => { e.target.onerror = null; e.target.src = avatarUrl(name); }}
         alt={name}
         className="p3-portrait-img"
+        loading="lazy"
       />
     </div>
   );
@@ -119,7 +120,7 @@ export default function Page3({ data }) {
           </section>
         )}
 
-        <img src={ASSETS.logoSmall} alt="" className="p3-bottom-logo" />
+        <img src={ASSETS.logoSmall} alt="" className="p3-bottom-logo" loading="lazy"/>
       </div>
     </div>
   );

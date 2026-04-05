@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useQueryParams } from './hooks/useQueryParams'
-import { FONTS } from './config/supabase'
+import { FONTS, ASSETS, preloadAllAssets } from './config/supabase'
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
 import Page3 from './pages/Page3'
@@ -13,6 +13,7 @@ export default function App() {
 
   // ── Inject New Kansas @font-face dynamically from Supabase ──────
   useEffect(() => {
+    preloadAllAssets();
     const style = document.createElement('style')
     style.textContent = `
       @font-face {

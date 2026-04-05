@@ -7,10 +7,10 @@ export default function Page5() {
     <div className="page page5">
 
       {/* Full background */}
-      <img src={ASSETS.back} alt="" className="p5-bg" />
+      <img src={ASSETS.back} alt="" className="p5-bg" loading="lazy"/>
 
       {/* Bottom logo */}
-      <img src={ASSETS.logoWhite} alt="" className="p5-logo" />
+      <img src={ASSETS.logoWhite} alt="" className="p5-logo" loading="lazy"/>
 
     </div>
   )
