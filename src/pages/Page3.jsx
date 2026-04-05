@@ -102,7 +102,7 @@ export default function Page3({ data }) {
         {hasCoProvider ? (
           <section className="p3-support">
             <div className="p3-therapist">
-              <TeamAvatar name={support.name} type="avatar" />
+              <TeamAvatar name={support.name} type="therapist" />
               <div className="p3-therapist-copy">
                 <div className="p3-therapist-name">{support.name}</div>
                 <div className="p3-therapist-role">{support.role}</div>
