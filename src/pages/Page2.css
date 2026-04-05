@@ -75,6 +75,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 28px;
 }
 
 /* Avatar image */
@@ -113,12 +114,12 @@
 }
 .p2-paragraph {
   font-family: 'New Kansas', sans-serif;
-  font-weight: 500;              /* Medium */
+  font-weight: 300;              /* Medium */
   font-size: 28px;
   line-height: 1.5;              /* 150% */
   letter-spacing: 0;
 
-  margin-bottom: 28px;
+  margin-bottom: 56px;
   color: #ede8db;
 }
 

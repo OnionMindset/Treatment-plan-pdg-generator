@@ -5,16 +5,15 @@ import "./Page2.css";
 export default function Page2({ data }) {
   const avatarUrl = (name) =>
     `https://ui-avatars.com/api/?name=${encodeURIComponent(
-      name || ""
+      name || "",
     )}&background=6b1212&color=f5f0e8&size=144&rounded=true`;
 
   const formatName = (name) =>
     (name || "").trim().replace(/\s+/g, "").replace(/\./g, "");
 
   const getTherapistAvatar = (name) => {
-    if (!name) return "";
-    const fileName = `${formatName(name)}-Avatar.svg`;
-    return `${ASSETS.team}/${fileName}`;
+    const key = (name || "").trim().replace(/\./g, "").replace(/\s+/g, "");
+    return ASSETS.team[key]?.avatar || avatarUrl(name);
   };
 
   const formatSession = (n) => {
@@ -37,7 +36,7 @@ export default function Page2({ data }) {
   return (
     <div className="page2">
       {/* Background logo */}
-      <img src={ASSETS.logoBig} alt="" className="bg-logo" loading="lazy"/>
+      <img src={ASSETS.logoBig} alt="" className="bg-logo" loading="lazy" />
 
       {/* Title */}
       <h1 className="p2-title">
@@ -66,7 +65,7 @@ export default function Page2({ data }) {
             <div className="p2-avatar-name">{person}</div>
             <div className="p2-avatar-role">
               {formatDesignation(
-                data.planCreatedByDesignation?.[i] || "Therapist"
+                data.planCreatedByDesignation?.[i] || "Therapist",
               )}
             </div>
           </div>

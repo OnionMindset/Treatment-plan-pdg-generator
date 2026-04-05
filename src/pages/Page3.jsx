@@ -2,40 +2,43 @@ import React from "react";
 import { ASSETS } from "../config/supabase";
 import "./Page3.css";
 
-// ── Pure helpers (module-level, not recreated on every render) ──────────────
+// ── Pure helpers ──────────────────────────────────────────────────
 
 const avatarUrl = (name) =>
   `https://ui-avatars.com/api/?name=${encodeURIComponent(name || "")}&background=6b1212&color=f5f0e8&size=200&rounded=true`;
 
-const formatName = (name) =>
-  (name || "").trim().replace(/\./g, "").replace(/\s+/g, "");
-
-const getTherapistAvatar = (name) =>
-  name ? `${ASSETS.team}/${formatName(name)}-Therapist.svg` : "";
+const getTeamImage = (name, type = "therapist") => {
+  const key = (name || "").trim().replace(/\./g, "").replace(/\s+/g, "");
+  return ASSETS.team[key]?.[type] || avatarUrl(name);
+};
 
 const formatDesignation = (value = "") =>
-  value.toString().trim()
+  value
+    .toString()
+    .trim()
     .replace(/[_-]+/g, " ")
     .replace(/\s+/g, " ")
     .replace(/\b\w/g, (ch) => ch.toUpperCase());
 
-// ── Sub-component: removes duplicated avatar + fallback pattern ─────────────
+// ── Sub-component ─────────────────────────────────────────────────
 
-function TeamAvatar({ name }) {
+function TeamAvatar({ name, type = "therapist" }) {
   return (
     <div className="p3-portrait">
       <img
-        src={getTherapistAvatar(name)}
-        onError={(e) => { e.target.onerror = null; e.target.src = avatarUrl(name); }}
+        src={getTeamImage(name, type)}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = avatarUrl(name);
+        }}
         alt={name}
         className="p3-portrait-img"
-        loading="lazy"
       />
     </div>
   );
 }
 
-// ── Pure selector: replaces mutating if/else block ──────────────────────────
+// ── Pure selector ─────────────────────────────────────────────────
 
 function getSupport(plan, data) {
   if (plan.psychiatryPlan) {
@@ -62,7 +65,7 @@ function getSupport(plan, data) {
   };
 }
 
-// ── Component ───────────────────────────────────────────────────────────────
+// ── Component ─────────────────────────────────────────────────────
 
 export default function Page3({ data }) {
   const plan = data.planDetails ?? {};
@@ -85,7 +88,7 @@ export default function Page3({ data }) {
 
         {/* ── Therapist ── */}
         <section className="p3-therapist">
-          <TeamAvatar name={therapist.name} />
+          <TeamAvatar name={therapist.name} type="therapist" />
           <div className="p3-therapist-copy">
             <div className="p3-therapist-name">{therapist.name}</div>
             <div className="p3-therapist-role">{formatDesignation(therapist.designation)}</div>
@@ -99,7 +102,7 @@ export default function Page3({ data }) {
         {hasCoProvider ? (
           <section className="p3-support">
             <div className="p3-therapist">
-              <TeamAvatar name={support.name} />
+              <TeamAvatar name={support.name} type="avatar" />
               <div className="p3-therapist-copy">
                 <div className="p3-therapist-name">{support.name}</div>
                 <div className="p3-therapist-role">{support.role}</div>
@@ -111,7 +114,9 @@ export default function Page3({ data }) {
           <section className="p3-community">
             <h2 className="p3-community-title">
               {support.title.split(" ").map((word, i, arr) => (
-                <React.Fragment key={i}>{word}{i < arr.length - 1 && <br />}</React.Fragment>
+                <React.Fragment key={i}>
+                  {word}{i < arr.length - 1 && <br />}
+                </React.Fragment>
               ))}
             </h2>
             <div className="p3-community-name">{support.name}</div>
@@ -120,7 +125,7 @@ export default function Page3({ data }) {
           </section>
         )}
 
-        <img src={ASSETS.logoSmall} alt="" className="p3-bottom-logo" loading="lazy"/>
+        <img src={ASSETS.logoSmall} alt="" className="p3-bottom-logo" />
       </div>
     </div>
   );

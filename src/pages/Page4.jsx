@@ -11,7 +11,7 @@ export default function Page4({ data }) {
       <div className="p4-sub">for the next 30 days:</div>
 
       {/* Price */}
-      <div className="p4-price">₹{data.pricing}</div>
+      <div className="p4-price">₹{Number(data.pricing).toLocaleString('en-IN')}</div>
 
       {/* Section 1 */}
       <div className="p4-section">

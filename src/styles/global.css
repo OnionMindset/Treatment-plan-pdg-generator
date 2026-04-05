@@ -53,55 +53,24 @@ html, body, #root {
 }
 .download-btn:hover { opacity: 0.85; }
 
-/* ── Pages wrapper (all pages stacked for PDF export) ───────────── */
+/* ── Pages wrapper ───────────────────────────────────────────────── */
 .pages-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 0;
   align-items: center;
 }
 
 /* ── Page base ──────────────────────────────────────────────────── */
 .page {
-  width: 390px;
-  min-height: 700px;
+  width: 1080px;
+  height: 1920px;
   position: relative;
   overflow: hidden;
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
   font-family: var(--font);
   background: var(--cream);
-}
-
-@page {
-  size: 1080px 1920px;
-  margin: 0;
-}
-
-@media print {
-  html, body, #root {
-    width: 1080px;
-    height: auto;
-  }
-
-  .page1,
-  .page2,
-  .Page4 {
-    width: 1080px;
-    height: 1920px;
-    break-after: page;
-    break-inside: avoid;
-    page-break-after: always;
-    page-break-inside: avoid;
-  }
-}
-
-.page {
-  width: 1080px;
-  height: 1920px;
-  margin: 0 auto;
-  overflow: hidden;
   box-sizing: border-box;
   page-break-after: always;
   page-break-inside: avoid;
@@ -116,9 +85,24 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-.pages-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: center;
+/* ── Print ───────────────────────────────────────────────────────── */
+@page {
+  size: 1080px 1920px;
+  margin: 0;
+}
+
+@media print {
+  html, body, #root {
+    width: 1080px;
+    height: auto;
+  }
+
+  .page {
+    width: 1080px;
+    height: 1920px;
+    break-after: page;
+    break-inside: avoid;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
 }
