@@ -13,8 +13,8 @@ import logoWhite from '../assets/glassOnionLogoWithNameWhite.svg'
 // ── Team avatar imports ───────────────────────────────────────────
 import DrMerlyn_Avatar      from '../assets/team/DrMerlyn-Avatar.svg'
 import DrMerlyn_Therapist   from '../assets/team/DrMerlyn-Therapist.svg'
-import DrNishitaC_Avatar    from '../assets/team/DrNishitaC-Avatar.svg'
-import DrNishitaC_Therapist from '../assets/team/DrNishitaC-Therapist.svg'
+import DrNishitaC_Avatar    from '../assets/team/DrNishita-Avatar.svg'
+import DrNishitaC_Therapist from '../assets/team/DrNishita-Therapist.svg'
 import DrSamarth_Avatar     from '../assets/team/DrSamarth-Avatar.svg'
 import DrSamarth_Therapist  from '../assets/team/DrSamarth-Therapist.svg'
 import Pranaamya_Avatar     from '../assets/team/Pranaamya-Avatar.svg'
@@ -30,7 +30,7 @@ export const ASSETS = {
   // Keyed by name for easy lookup
   team: {
     DrMerlyn:   { avatar: DrMerlyn_Avatar,   therapist: DrMerlyn_Therapist },
-    DrNishitaC: { avatar: DrNishitaC_Avatar, therapist: DrNishitaC_Therapist },
+    DrNishita: { avatar: DrNishitaC_Avatar, therapist: DrNishitaC_Therapist },
     DrSamarth:  { avatar: DrSamarth_Avatar,  therapist: DrSamarth_Therapist },
     Pranaamya:  { avatar: Pranaamya_Avatar,  therapist: Pranaamya_Therapist },
     Sahana:     { avatar: Sahana_Avatar,     therapist: Sahana_Therapist },
