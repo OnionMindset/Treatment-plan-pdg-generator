@@ -157,6 +157,10 @@ export default function App() {
         <Page4 data={data} />
         <Page5 data={data} />
       </div>
+
+      <button className="download-btn" onClick={handleDownload}>
+        ⬇ Download PDF
+      </button>
     </div>
   );
 }
