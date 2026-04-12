@@ -11,15 +11,25 @@ export default function Page4({ data }) {
       <div className="p4-sub">for the next 30 days:</div>
 
       {/* Price */}
-      <div className="p4-price">₹{Number(data.pricing).toLocaleString('en-IN')}</div>
+      <div className="p4-price">
+        ₹{Number(data.pricing).toLocaleString("en-IN")}
+      </div>
 
       {/* Section 1 */}
       <div className="p4-section">
         <div className="p4-chip">What does this include?</div>
         <ul>
-          <li>Weekly personalised therapy sessions for the next 30 days.</li>
-          <li>Access to our group therapy sessions.</li>
-          <li>Access to our community events.</li>
+          <li>
+            <span className="p4-bullet">•</span>Weekly personalised therapy
+            sessions for the next 30 days.
+          </li>
+          <li>
+            <span className="p4-bullet">•</span>Access to our group therapy
+            sessions.
+          </li>
+          <li>
+            <span className="p4-bullet">•</span>Access to our community events.
+          </li>
         </ul>
       </div>
 
@@ -35,7 +45,8 @@ export default function Page4({ data }) {
       {/* Section 3 */}
       <div className="p4-section">
         <div className="p4-chip">What are the next steps?</div>
-        <p>You can make the payment and start your therapy immediately. <br></br>
+        <p>
+          You can make the payment and start your therapy immediately. <br></br>
           For any doubts / queries, you can even contact your assigned community
           manager.
         </p>

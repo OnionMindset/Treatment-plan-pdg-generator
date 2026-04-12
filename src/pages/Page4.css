@@ -59,17 +59,30 @@
   max-width: 850px;
   margin: 0 auto 48px;
   padding: 0;
-  list-style-position: inside;
-  text-align: center;
+  list-style: none;
+  text-align: left;
   font-size: 24px;
   font-weight: 400;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .p4-section li {
   margin-bottom: 21px;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.p4-bullet {
+  flex-shrink: 0;
+  color: #e8ec91;
+  font-size: 24px;
+  line-height: 1.6;
 }
 
 .p4-section p {
