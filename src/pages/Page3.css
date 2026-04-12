@@ -35,17 +35,29 @@
 .p3-therapist {
   width: 100%;
   margin-top: 110px;
-  padding: 0 120px;
+  padding: 0 0 0 160px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 100px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 50px;
+}
+
+.p3-therapist--secondary {
+  margin-top: 90px;
 }
 
 .p3-portrait {
-  overflow: hidden;
-  flex: 0 0 auto;
+  flex: 0 0 280px;
+  width: 280px;
   background: none;
+  overflow: hidden;
+}
+
+.p3-portrait-img {
+  /* width: 280px; */
+  /* height: 340px; */
+  object-fit: cover;
+  display: block;
 }
 
 .p3-portrait-placeholder {
@@ -60,10 +72,7 @@
 .p3-therapist-copy {
   color: #E8E998;
   max-width: 520px;
-}
-
-.p3-therapist-secondary {
-  margin-top: 90px;
+  padding-top: 150px;
 }
 
 .p3-therapist-name {

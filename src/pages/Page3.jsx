@@ -2,8 +2,6 @@ import React from "react";
 import { ASSETS } from "../config/supabase";
 import "./Page3.css";
 
-// ── Pure helpers ──────────────────────────────────────────────────
-
 const avatarUrl = (name) =>
   `https://ui-avatars.com/api/?name=${encodeURIComponent(name || "")}&background=6b1212&color=f5f0e8&size=200&rounded=true`;
 
@@ -19,8 +17,6 @@ const formatDesignation = (value = "") =>
     .replace(/[_-]+/g, " ")
     .replace(/\s+/g, " ")
     .replace(/\b\w/g, (ch) => ch.toUpperCase());
-
-// ── Sub-component ─────────────────────────────────────────────────
 
 function TeamAvatar({ name, type = "therapist" }) {
   return (
@@ -38,14 +34,14 @@ function TeamAvatar({ name, type = "therapist" }) {
   );
 }
 
-// ── Pure selector ─────────────────────────────────────────────────
-
 function getSupport(plan, data) {
   if (plan.psychiatryPlan) {
     return {
       title: "psychiatrist support",
       name: data.assignedPsychiatrist || "—",
-      role: formatDesignation(data.assignedPsychiatristDisplayDesig || "Psychiatrist"),
+      role: formatDesignation(
+        data.assignedPsychiatristDisplayDesig || "Psychiatrist",
+      ),
       note: data.assignedPsychiatristQualification || "",
     };
   }
@@ -53,7 +49,9 @@ function getSupport(plan, data) {
     return {
       title: "nutritionist support",
       name: data.assignedNutritionist || "—",
-      role: formatDesignation(data.assignedNutritionistDesignation || "Nutritionist"),
+      role: formatDesignation(
+        data.assignedNutritionistDesignation || "Nutritionist",
+      ),
       note: data.assignedNutritionistQualification || "",
     };
   }
@@ -65,8 +63,6 @@ function getSupport(plan, data) {
   };
 }
 
-// ── Component ─────────────────────────────────────────────────────
-
 export default function Page3({ data }) {
   const plan = data.planDetails ?? {};
   const hasCoProvider = !!(plan.psychiatryPlan || plan.nutritionist);
@@ -74,7 +70,8 @@ export default function Page3({ data }) {
 
   const therapist = {
     name: data.assignedTherapist || "—",
-    designation: data.assignedTherapistDisplayDesig || data.assignedTherapistDesignation,
+    designation:
+      data.assignedTherapistDisplayDesig || data.assignedTherapistDesignation,
     qualification: data.assignedTherapistQualification || "—",
   };
 
@@ -82,7 +79,8 @@ export default function Page3({ data }) {
     <div className="page3">
       <div className="page-inner page3-inner">
         <h1 className="p3-title">
-          meet your<br />
+          meet your
+          <br />
           {hasCoProvider ? "therapists" : "therapist"}
         </h1>
 
@@ -91,7 +89,9 @@ export default function Page3({ data }) {
           <TeamAvatar name={therapist.name} type="therapist" />
           <div className="p3-therapist-copy">
             <div className="p3-therapist-name">{therapist.name}</div>
-            <div className="p3-therapist-role">{formatDesignation(therapist.designation)}</div>
+            <div className="p3-therapist-role">
+              {formatDesignation(therapist.designation)}
+            </div>
             <div className="p3-therapist-qual">{therapist.qualification}</div>
           </div>
         </section>
@@ -100,14 +100,14 @@ export default function Page3({ data }) {
 
         {/* ── Support ── */}
         {hasCoProvider ? (
-          <section className="p3-support">
-            <div className="p3-therapist">
-              <TeamAvatar name={support.name} type="therapist" />
-              <div className="p3-therapist-copy">
-                <div className="p3-therapist-name">{support.name}</div>
-                <div className="p3-therapist-role">{support.role}</div>
-                {support.note && <div className="p3-therapist-qual">{support.note}</div>}
-              </div>
+          <section className="p3-therapist">
+            <TeamAvatar name={support.name} type="therapist" />
+            <div className="p3-therapist-copy">
+              <div className="p3-therapist-name">{support.name}</div>
+              <div className="p3-therapist-role">{support.role}</div>
+              {support.note && (
+                <div className="p3-therapist-qual">{support.note}</div>
+              )}
             </div>
           </section>
         ) : (
@@ -115,13 +115,16 @@ export default function Page3({ data }) {
             <h2 className="p3-community-title">
               {support.title.split(" ").map((word, i, arr) => (
                 <React.Fragment key={i}>
-                  {word}{i < arr.length - 1 && <br />}
+                  {word}
+                  {i < arr.length - 1 && <br />}
                 </React.Fragment>
               ))}
             </h2>
             <div className="p3-community-name">{support.name}</div>
             <div className="p3-community-role">{support.role}</div>
-            {support.note && <p className="p3-community-note">{support.note}</p>}
+            {support.note && (
+              <p className="p3-community-note">{support.note}</p>
+            )}
           </section>
         )}
 
