@@ -102,14 +102,19 @@ export function useQueryParams() {
       assignedTherapistQualification: getParam(
         'assignedTherapistQualification'
       ),
+      assignedTherapistDisplayDesig: getParam(
+        'assignedTherapistDisplayDesig'
+      ),
 
-      // ✅ FIXED: now included
       assignedPsychiatrist: getParam('assignedPsychiatrist'),
       assignedPsychiatristDesignation: getParam(
         'assignedPsychiatristDesignation'
       ),
       assignedPsychiatristQualification: getParam(
         'assignedPsychiatristQualification'
+      ),
+      assignedPsychiatristDisplayDesig: getParam(
+        'assignedPsychiatristDisplayDesig'
       ),
 
       assignedNutritionist: getParam('assignedNutritionist'),

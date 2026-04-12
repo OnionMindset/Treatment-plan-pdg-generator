@@ -74,6 +74,7 @@ export default function Page2({ data }) {
 
       {/* Plan Details */}
       <div className="p2-plan">
+        <p className="p2-paragraph-title">For the next 30 days:</p>
         {/* ── Frequency ───────────────── */}
         {plan.sessionFrequency && (
           <p className="p2-paragraph">

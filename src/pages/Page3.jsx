@@ -45,7 +45,7 @@ function getSupport(plan, data) {
     return {
       title: "psychiatrist support",
       name: data.assignedPsychiatrist || "—",
-      role: formatDesignation(data.assignedPsychiatristDesignation || "Psychiatrist"),
+      role: formatDesignation(data.assignedPsychiatristDisplayDesig || "Psychiatrist"),
       note: data.assignedPsychiatristQualification || "",
     };
   }
@@ -74,7 +74,7 @@ export default function Page3({ data }) {
 
   const therapist = {
     name: data.assignedTherapist || "—",
-    designation: data.assignedTherapistDesignation || "—",
+    designation: data.assignedTherapistDisplayDesig || "—",
     qualification: data.assignedTherapistQualification || "—",
   };
 

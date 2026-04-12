@@ -45,7 +45,7 @@
 .p2-names {
   display: grid;
   width: 100%;
-  margin-bottom: 120px;
+  margin-bottom: 60px;
   color: #ede8db;
   text-align: center;
 }
@@ -112,6 +112,18 @@
   text-align: left;
   padding: 0 107px;
 }
+
+.p2-paragraph-title {
+  font-family: 'New Kansas', sans-serif;
+  font-weight: 500;              /* Medium */
+  font-size: 48px;
+  line-height: 1.5;              /* 150% */
+  letter-spacing: 0;
+  margin-bottom: 36px;
+  margin-top:0;
+  color: #ede8db;
+}
+
 .p2-paragraph {
   font-family: 'New Kansas', sans-serif;
   font-weight: 300;              /* Medium */
