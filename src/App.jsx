@@ -139,7 +139,7 @@ export default function App() {
     }
 
     console.log("10. saving...");
-    pdf.save(`treatment-plan-${data.customerName || "draft"}.pdf`);
+    pdf.save(`${data.customerName || "draft"}_Treatment Plan_Glass Onion Therapy.pdf`);
     console.log("11. done");
   };
 
