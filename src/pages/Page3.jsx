@@ -74,7 +74,7 @@ export default function Page3({ data }) {
 
   const therapist = {
     name: data.assignedTherapist || "—",
-    designation: data.assignedTherapistDisplayDesig || "—",
+    designation: data.assignedTherapistDisplayDesig || data.assignedTherapistDesignation,
     qualification: data.assignedTherapistQualification || "—",
   };
 
