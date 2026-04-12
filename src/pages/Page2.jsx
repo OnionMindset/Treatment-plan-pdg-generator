@@ -75,64 +75,68 @@ export default function Page2({ data }) {
       {/* Plan Details */}
       <div className="p2-plan">
         <p className="p2-paragraph-title">For the next 30 days:</p>
-        {/* ── Frequency ───────────────── */}
-        {plan.sessionFrequency && (
-          <p className="p2-paragraph">
-            Therapeutic intervention with a session frequency of{" "}
-            <strong>{formatSession(plan.sessionFrequency)}</strong> every{" "}
-            <strong>{plan.sessionInterval || "—"}</strong>. If you feel the
-            need, or if your therapist recommends it, we may increase the
-            frequency to give you additional support. Any ad-hoc session will
-            not come at an additional cost and is a part of the treatment plan.
-          </p>
-        )}
+        <ul className="p2-list">
+          {/* ── Frequency ───────────────── */}
+          {plan.sessionFrequency && (
+            <li className="p2-paragraph">
+              Therapeutic intervention with a session frequency of{" "}
+              <strong>{formatSession(plan.sessionFrequency)}</strong> every{" "}
+              <strong>{plan.sessionInterval || "—"}</strong>. If you feel the
+              need, or if your therapist recommends it, we may increase the
+              frequency to give you additional support. Any ad-hoc session will
+              not come at an additional cost and is a part of the treatment
+              plan.
+            </li>
+          )}
 
-        {/* ── Psychometric Assessment ───────── */}
-        {plan.assessmentPlan?.length > 0 ? (
-          <p className="p2-paragraph">
-            We are considering{" "}
-            <strong>{formatList(plan.assessmentPlan)}</strong> — psychometric
-            assessments during the course of your therapy. This is also a part
-            of your treatment plan and doesn’t come at an additional cost.
-          </p>
-        ) : (
-          <p className="p2-paragraph">
-            We may or may not consider a psychometric assessment after 2 weeks.
-          </p>
-        )}
+          {/* ── Psychometric Assessment ───────── */}
+          {plan.assessmentPlan?.length > 0 ? (
+            <li className="p2-paragraph">
+              We are considering{" "}
+              <strong>{formatList(plan.assessmentPlan)}</strong> — psychometric
+              assessments during the course of your therapy. This is also a part
+              of your treatment plan and doesn't come at an additional cost.
+            </li>
+          ) : (
+            <li className="p2-paragraph">
+              We may or may not consider a psychometric assessment after 2
+              weeks.
+            </li>
+          )}
 
-        {/* ── Psychiatry ───────────────── */}
-        {plan.psychiatryPlan ? (
-          <p className="p2-paragraph">
-            We are also recommending psychiatric consultations{" "}
-            {plan.psychiatrist && (
-              <>
-                with <strong>{plan.psychiatrist}</strong>{" "}
-              </>
-            )}
-            with a session frequency of{" "}
-            <strong>{formatSession(plan.psychiatryFrequency)}</strong> every{" "}
-            <strong>{plan.psychiatryInterval || "—"}</strong>.
-          </p>
-        ) : (
-          <p className="p2-paragraph">
-            We do not see the need for any psychiatric intervention at this
-            stage.
-          </p>
-        )}
+          {/* ── Psychiatry ───────────────── */}
+          {plan.psychiatryPlan ? (
+            <li className="p2-paragraph">
+              We are also recommending psychiatric consultations{" "}
+              {plan.psychiatrist && (
+                <>
+                  with <strong>{plan.psychiatrist}</strong>{" "}
+                </>
+              )}
+              with a session frequency of{" "}
+              <strong>{formatSession(plan.psychiatryFrequency)}</strong> every{" "}
+              <strong>{plan.psychiatryInterval || "—"}</strong>.
+            </li>
+          ) : (
+            <li className="p2-paragraph">
+              We do not see the need for any psychiatric intervention at this
+              stage.
+            </li>
+          )}
 
-        {/* ── Nutritionist ─────────────── */}
-        {plan.nutritionist && (
-          <p className="p2-paragraph">
-            We also believe consulting our nutritionist{" "}
-            {plan.nutritionistName && (
-              <>
-                <strong>{plan.nutritionistName}</strong>{" "}
-              </>
-            )}
-            will be beneficial for your therapy process with us.
-          </p>
-        )}
+          {/* ── Nutritionist ─────────────── */}
+          {plan.nutritionist && (
+            <li className="p2-paragraph">
+              We also believe consulting our nutritionist{" "}
+              {plan.nutritionistName && (
+                <>
+                  <strong>{plan.nutritionistName}</strong>{" "}
+                </>
+              )}
+              will be beneficial for your therapy process with us.
+            </li>
+          )}
+        </ul>
       </div>
     </div>
   );
